@@ -1170,12 +1170,12 @@ impl<T> Snarl<T> {
                     header_frame_rect.max.y + ui.spacing().item_spacing.y
                         - node_state.payload_offset(openness),
                 ),
-                pos2(f32::max(node_rect.max.x, header_rect.max.x), f32::INFINITY),
+                pos2(f32::max(node_rect.max.x, header_rect.max.x), f32::MAX),
             );
 
             let payload_clip_rect = Rect::from_min_max(
                 pos2(header_rect.min.x, header_frame_rect.max.y),
-                pos2(f32::max(node_rect.max.x, header_rect.max.x), f32::INFINITY),
+                pos2(f32::max(node_rect.max.x, header_rect.max.x), f32::MAX),
             );
 
             // Show input pins.
@@ -1432,7 +1432,7 @@ impl<T> Snarl<T> {
                 let body_top = payload_rect.top();
 
                 let mut body_rect =
-                    Rect::from_min_max(pos2(body_left, body_top), pos2(body_right, f32::INFINITY));
+                    Rect::from_min_max(pos2(body_left, body_top), pos2(body_right, f32::MAX));
                 body_rect = node_state.align_body(body_rect);
 
                 let mut body_ui = ui.child_ui_with_id_source(
@@ -1474,7 +1474,7 @@ impl<T> Snarl<T> {
 
                 let mut footer_rect = Rect::from_min_max(
                     pos2(footer_left, footer_top),
-                    pos2(footer_right, f32::INFINITY),
+                    pos2(footer_right, f32::MAX),
                 );
 
                 footer_rect = node_state.align_footer(footer_rect);
